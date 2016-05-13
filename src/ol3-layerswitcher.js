@@ -164,7 +164,7 @@ ol.control.LayerSwitcher.prototype.renderLayer_ = function(lyr, idx) {
 
     var li = document.createElement('li');
 
-    var lyrTitle = lyr.get('title');
+    var lyrName = lyr.get('name');
     var lyrId = ol.control.LayerSwitcher.uuid();
 
     var label = document.createElement('label');
@@ -172,7 +172,7 @@ ol.control.LayerSwitcher.prototype.renderLayer_ = function(lyr, idx) {
     if (lyr.getLayers && !lyr.get('combine')) {
 
         li.className = 'group';
-        label.innerHTML = lyrTitle;
+        label.innerHTML = lyrName;
         li.appendChild(label);
         var ul = document.createElement('ul');
         li.appendChild(ul);
@@ -197,7 +197,7 @@ ol.control.LayerSwitcher.prototype.renderLayer_ = function(lyr, idx) {
         li.appendChild(input);
 
         label.htmlFor = lyrId;
-        label.innerHTML = lyrTitle;
+        label.innerHTML = lyrName;
         li.appendChild(label);
 
     }
@@ -216,7 +216,7 @@ ol.control.LayerSwitcher.prototype.renderLayers_ = function(lyr, elm) {
     var lyrs = lyr.getLayers().getArray().slice().reverse();
     for (var i = 0, l; i < lyrs.length; i++) {
         l = lyrs[i];
-        if (l.get('title')) {
+        if (l.get('name')) {
             elm.appendChild(this.renderLayer_(l, i));
         }
     }
